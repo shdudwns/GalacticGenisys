@@ -21,7 +21,7 @@ If the version is invalid, the issue will be CLOSED
 Game versions include Pocket Edition and Windows 10 Edition Beta
 NOTE: If you are using WINDOWS 10 EDITION, please remember to say so!
 -->
-* Genisys:
+* GalacgicGenisys:
 * PHP:
 * Server OS:
 * Game version: 
