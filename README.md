@@ -10,7 +10,9 @@ However, this project has been abandoned by most of its active developers, and t
 
 Get Genisys
 -------------
-## link coming soon
+[![CircleCI](https://circleci.com/gh/GalacticSoftware/GalacticGenisys/tree/master.svg?style=svg)](https://circleci.com/gh/GalacticSoftware/GalacticGenisys/tree/master)
+
+[![Travis](https://travis-ci.org/GalacticSoftware/GalacticGenisys.svg?branch=master)](https://travis-ci.org/GalacticSoftware/GalacticGenisys)
 
 NOTE: **The master branch is the only officially supported branch.**
 _All other branches are in testing and may be unstable. Do not use builds from other branches unless you are sure you understand the risks._
