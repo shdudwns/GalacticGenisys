@@ -49,7 +49,7 @@ class SugarCaneStack extends Object{
 		return false;
 	}
 
-	public function canPlaceObject(ChunkManager $level, int $x, int $y, int $z) : bool{
+	public function canPlaceObject(ChunkManager $level, $x, $y, $z) : bool{
 		$below = $level->getBlockIdAt($x, $y - 1, $z);
 		if($level->getBlockIdAt($x, $y, $z) == Block::AIR and
 			($below == Block::DIRT or $below == Block::GRASS or $below == Block::SAND) and (
@@ -64,9 +64,9 @@ class SugarCaneStack extends Object{
 		return false;
 	}
 
-	public function placeObject(ChunkManager $level, int $x, int $y, int $z){
+	public function placeObject(ChunkManager $level, $x, $y, $z){
 		for($yy = 0; $yy < $this->totalHeight; $yy++){
-			if($level->getBlockIdAt($x, $y + $yy, $z) != Block::AIR){
+			if($level->getBlockIdAt($x, $y + $y, $z) != Block::AIR){
 				return;
 			}
 			$level->setBlockIdAt($x, $y + $yy, $z, Block::SUGARCANE_BLOCK);

@@ -43,7 +43,7 @@ class CactusStack extends Object{
 		$this->totalHeight = $this->baseHeight + $this->random->nextBoundedInt($this->randomHeight);
 	}
 
-	public function canPlaceObject(ChunkManager $level, int $x, int $y, int $z) : bool{
+	public function canPlaceObject(ChunkManager $level, $x, $y, $z) : bool{
 		$below = $level->getBlockIdAt($x, $y - 1, $z);
 		if($level->getBlockIdAt($x, $y, $z) == Block::AIR and
 			($below == Block::SAND or $below == Block::CACTUS) and (
