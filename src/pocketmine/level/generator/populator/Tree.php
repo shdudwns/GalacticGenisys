@@ -27,7 +27,7 @@ use pocketmine\level\ChunkManager;
 use pocketmine\level\generator\object\Tree as ObjectTree;
 use pocketmine\utils\Random;
 
-class Tree extends Populator{
+class Tree1 extends Populator{
 	/** @var ChunkManager */
 	private $level;
 	private $randomAmount;
