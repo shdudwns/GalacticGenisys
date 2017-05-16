@@ -4,7 +4,7 @@ GalacticGenisys
 __Feature-rich server software for Minecraft: Pocket Edition & Windows 10 Edition Beta__
 
 
-Get Genisys
+Get GalacticGenisys
 -------------
 [![CircleCI](https://circleci.com/gh/GalacticSoftware/GalacticGenisys/tree/master.svg?style=svg)](https://circleci.com/gh/GalacticSoftware/GalacticGenisys/tree/master)
 
