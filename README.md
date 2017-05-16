@@ -3,10 +3,6 @@ GalacticGenisys
 
 __Feature-rich server software for Minecraft: Pocket Edition & Windows 10 Edition Beta__
 
-Introduction
--------------
-Genisys is one of several derived projects resulting from the inactivity of **[PocketMine/PocketMine-MP](https://github.com/PocketMine/PocketMine-MP)**. It has many gameplay features implemented which PocketMine-MP does not since Minecraft PE v0.11.
-However, this project has been abandoned by most of its active developers, and the project quality has been lowered by too many people touching code without understanding side effects.
 
 Get Genisys
 -------------
