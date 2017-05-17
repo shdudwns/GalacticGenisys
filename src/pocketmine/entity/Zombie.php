@@ -33,9 +33,9 @@ use pocketmine\Player;
 class Zombie extends Monster{
 	const NETWORK_ID = 32;
 
-	public $width = 0.6;
-	public $length = 0.6;
-	public $height = 1.8;
+	public $width = 0.8;
+	public $length = 0.8;
+	public $height = 2.8;
 
 	public $dropExp = [5, 5];
 	
