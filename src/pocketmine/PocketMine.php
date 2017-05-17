@@ -72,7 +72,7 @@ namespace pocketmine {
 	use pocketmine\utils\Utils;
 	use pocketmine\wizard\Installer;
 
-	const VERSION = ""; //will be set by CI to a git hash 
+	const VERSION = "0.1.9"; //will be set by CI to a git hash 
 	const API_VERSION = "3.0.1";
 	const CODENAME = "bloody hell";
 	const GENISYS_API_VERSION = '2.0.0';

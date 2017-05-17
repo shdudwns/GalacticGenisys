@@ -205,7 +205,7 @@ class QueryRegenerateEvent extends ServerEvent{
 		];
 
 		foreach($KVdata as $key => $value){
-			$query .= $key . "\x00" . $value . "\x00";
+	//		$query .= $key . "\x00" . $value . "\x00";
 		}
 
 		foreach($this->extraData as $key => $value){

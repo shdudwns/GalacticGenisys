@@ -1457,18 +1457,19 @@ class Server{
 		}, $microseconds);
 	}
 
-	public function about(){
+ 	public function about(){
 		$string = '
 
 	§3GalacticGenisys§f is a custom version of §bgenisys and pmmp§f, modified by §5GalacticSoftware§f
 	Version: §6' . $this->getPocketMineVersion() . '§f
-	Target client version: §b' . ProtocolInfo::MINECRAFT_VERSION . '§f
+	Target client version: §b' . ProtocolInfo::CURRENT_PROTOCOL . '§f
 	Source code: §dhttps://github.com/GalacticSoftware/GalacticGenisys§f
 	';
 	
 		$this->getLogger()->info($string);
-	}
 
+	}
+	
 	public function loadAdvancedConfig(){
 		$this->playerMsgType = $this->getAdvancedProperty("server.player-msg-type", self::PLAYER_MSG_TYPE_MESSAGE);
 		$this->playerLoginMsg = $this->getAdvancedProperty("server.login-msg", "§3@player joined the game");
