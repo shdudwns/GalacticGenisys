@@ -34,6 +34,7 @@ interface Info{
 	 * Actual Minecraft: PE protocol version
 	 */
 	const CURRENT_PROTOCOL = 107;
+    const ACCEPTED_PROTOCOLS = [107];
 	const MINECRAFT_VERSION = "v1.0.8.1";
 	const MINECRAFT_VERSION_NETWORK = "1.0.8.1";
 
