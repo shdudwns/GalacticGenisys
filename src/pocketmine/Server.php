@@ -1462,7 +1462,7 @@ class Server{
 
 	§3GalacticGenisys§f is a custom version of §bgenisys and pmmp§f, modified by §5GalacticSoftware§f
 	Version: §6' . $this->getPocketMineVersion() . '§f
-	Target client version: §b' . $this->getVersion() . '§f
+	Target client version: §b' . ProtocolInfo::MINECRAFT_VERSION . '§f
 	Source code: §dhttps://github.com/GalacticSoftware/GalacticGenisys§f
 	';
 	
