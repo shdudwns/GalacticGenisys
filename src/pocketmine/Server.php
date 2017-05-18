@@ -105,6 +105,7 @@ use pocketmine\utils\TextFormat;
 use pocketmine\utils\Utils;
 use pocketmine\utils\UUID;
 use pocketmine\utils\VersionString;
+use pocketmine\entity\ai\AIHolder;
 
 /**
  * The class that manages everything
@@ -493,6 +494,10 @@ class Server{
 	 */
 	public function getGamemode(){
 		return $this->getConfigInt("gamemode", 0) & 0b11;
+		}
+	
+	public function getAIHolder(){
+		return $this->aiHolder;
 	}
 
 	/**
@@ -1858,7 +1863,7 @@ class Server{
 			}
 
 			$this->enablePlugins(PluginLoadOrder::POSTWORLD);
-
+            if($this->aiEnabled) $this->aiHolder = new AIHolder($this);
 			if($this->dserverConfig["enable"] and ($this->getAdvancedProperty("dserver.server-list", "") != "")) $this->scheduler->scheduleRepeatingTask(new CallbackTask([
 				$this,
 				"updateDServerInfo"
