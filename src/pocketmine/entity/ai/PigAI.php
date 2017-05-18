@@ -6,7 +6,7 @@ use pocketmine\math\Vector3;
 use pocketmine\entity\Entity;
 use pocketmine\entity\Pig;
 use pocketmine\scheduler\CallbackTask;
-use pocketmine\network\mcpe\protocol\SetEntityMotionPacket;
+use pocketmine\network\protocol\SetEntityMotionPacket;
 
 class PigAI{
 
