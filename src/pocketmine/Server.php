@@ -105,6 +105,7 @@ use pocketmine\utils\TextFormat;
 use pocketmine\utils\Utils;
 use pocketmine\utils\UUID;
 use pocketmine\utils\VersionString;
+use pocketmine\resourcepacks\ResourcePackManager;
 
 /**
  * The class that manages everything
@@ -182,6 +183,8 @@ class Server{
 
 	/** @var CraftingManager */
 	private $craftingManager;
+	
+	private $resourceManager;
 
 	/** @var ConsoleCommandSender */
 	private $consoleSender;
@@ -684,6 +687,17 @@ class Server{
 	public function getCraftingManager(){
 		return $this->craftingManager;
 	}
+	
+	/**
+	 * @return ResourcePackManager
+	 */
+	public function getResourceManager() : ResourcePackManager{
+		return $this->resourceManager;
+	}
+
+	public function getResourcePackManager() : ResourcePackManager{
+	    return $this->resourceManager;
+    }
 
 	/**
 	 * @return ServerScheduler
@@ -1443,18 +1457,19 @@ class Server{
 		}, $microseconds);
 	}
 
-	public function about(){
+ 	public function about(){
 		$string = '
 
 	§3GalacticGenisys§f is a custom version of §bgenisys and pmmp§f, modified by §5GalacticSoftware§f
 	Version: §6' . $this->getPocketMineVersion() . '§f
-	Target client version: §b' . ProtocolInfo::MINECRAFT_VERSION . '§f
+	Target client version: §b' . ProtocolInfo::CURRENT_PROTOCOL . '§f
 	Source code: §dhttps://github.com/GalacticSoftware/GalacticGenisys§f
 	';
 	
 		$this->getLogger()->info($string);
-	}
 
+	}
+	
 	public function loadAdvancedConfig(){
 		$this->playerMsgType = $this->getAdvancedProperty("server.player-msg-type", self::PLAYER_MSG_TYPE_MESSAGE);
 		$this->playerLoginMsg = $this->getAdvancedProperty("server.login-msg", "§3@player joined the game");
@@ -1770,6 +1785,8 @@ class Server{
 			EnchantmentLevelTable::init();
 			Color::init();
 			$this->craftingManager = new CraftingManager();
+			
+			$this->resourceManager = new ResourcePackManager($this, $this->getDataPath() . "resource_packs" . DIRECTORY_SEPARATOR);
 
 			$this->pluginManager = new PluginManager($this, $this->commandMap);
 			$this->pluginManager->subscribeToPermission(Server::BROADCAST_CHANNEL_ADMINISTRATIVE, $this->consoleSender);

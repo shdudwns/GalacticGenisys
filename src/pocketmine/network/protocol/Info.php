@@ -2,19 +2,22 @@
 
 /*
  *
- *  ____            _        _   __  __ _                  __  __ ____
- * |  _ \ ___   ___| | _____| |_|  \/  (_)_ __   ___      |  \/  |  _ \
- * | |_) / _ \ / __| |/ / _ \ __| |\/| | | '_ \ / _ \_____| |\/| | |_) |
- * |  __/ (_) | (__|   <  __/ |_| |  | | | | | |  __/_____| |  | |  __/
- * |_|   \___/ \___|_|\_\___|\__|_|  |_|_|_| |_|\___|     |_|  |_|_|
+ *  _____            _               _____           
+ * / ____|          (_)             |  __ \          
+ *| |  __  ___ _ __  _ ___ _   _ ___| |__) | __ ___  
+ *| | |_ |/ _ \ '_ \| / __| | | / __|  ___/ '__/ _ \ 
+ *| |__| |  __/ | | | \__ \ |_| \__ \ |   | | | (_) |
+ * \_____|\___|_| |_|_|___/\__, |___/_|   |_|  \___/ 
+ *                         __/ |                    
+ *                        |___/                     
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * @author PocketMine Team
- * @link http://www.pocketmine.net/
+ * @author GenisysPro
+ * @link https://github.com/GenisysPro/GenisysPro
  *
  *
 */
@@ -30,10 +33,9 @@ interface Info{
 	/**
 	 * Actual Minecraft: PE protocol version
 	 */
-
 	const CURRENT_PROTOCOL = 107;
-	const ACCEPTED_PROTOCOLS = [107];
-	const MINECRAFT_VERSION = "v1.0.8";
+	const ACCEPTED_PROTOCOLS = [105,106,107];	
+	const MINECRAFT_VERSION = ["v1.0.5","v1.0.6","v1.0.7","v1.0.8"];
 	const MINECRAFT_VERSION_NETWORK = "1.0.8";
 
 	const LOGIN_PACKET = 0x01;
@@ -124,4 +126,5 @@ interface Info{
 	const PLAY_SOUND_PACKET = 0x56;
 	const STOP_SOUND_PACKET = 0x57;
 	const SET_TITLE_PACKET = 0x58;
+
 }

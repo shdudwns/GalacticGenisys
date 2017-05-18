@@ -22,31 +22,26 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * @author GenisysPro
- * @link https://github.com/GenisysPro/GenisysPro
+ * @author PocketMine Team
+ * @link http://www.pocketmine.net/
  *
  *
 */
 
+namespace pocketmine\resourcepacks;
 
-namespace pocketmine\network\protocol\types;
 
+interface ResourcePack{
 
-interface InventoryNetworkIds{
+	public function getPackName() : string;
 
-	const INVENTORY = -1;
-	const CONTAINER = 0;
-	const WORKBENCH = 1;
-	const FURNACE = 2;
-	const ENCHANTMENT = 3;
-	const BREWING_STAND = 4;
-	const ANVIL = 5;
-	const DISPENSER = 6;
-	const DROPPER = 7;
-	const HOPPER = 8;
-	const CAULDRON = 9;
-	const MINECART_CHEST = 10;
-	const MINECART_HOPPER = 11;
-	const HORSE = 12;
-	const BEACON = 13;
+	public function getPackId() : string;
+
+	public function getPackSize() : int;
+
+	public function getPackVersion() : string;
+
+	public function getSha256() : string;
+
+	public function getPackChunk(int $start, int $length) : string;
 }
