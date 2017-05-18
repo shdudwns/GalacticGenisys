@@ -9,7 +9,7 @@ use pocketmine\math\Vector2;
 use pocketmine\entity\Entity;
 use pocketmine\entity\Skeleton;
 use pocketmine\scheduler\CallbackTask;
-use pocketmine\network\mcpe\protocol\SetEntityMotionPacket;
+use pocketmine\network\protocol\SetEntityMotionPacket;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityShootBowEvent;
 use pocketmine\nbt\NBT;
