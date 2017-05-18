@@ -2,7 +2,7 @@
 
 #Version of this file
 config:
- version: 24
+ version: 2
 
 level:
  #Set if weather is enabled (rain may cause lag to older devices)
@@ -71,7 +71,7 @@ redstone:
  ################################################
  #If it is false, the redstone system won't work#
  ################################################
- enable: false
+ enable: true 
  #Choose if frequency pulses are enabled
  frequency-pulse: false
  #Set the frequency of pulse. Default = 1s
@@ -106,8 +106,6 @@ dserver:
 inventory:
  #Set this to true if you have problems with anvils. This will process inventory transactions in a vanilla fashion with no anti-cheats or verification.
  allow-cheats: false
- 
- 
   
 ai:
  #AI switch
