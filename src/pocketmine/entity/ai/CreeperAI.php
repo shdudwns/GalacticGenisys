@@ -9,7 +9,7 @@ use pocketmine\math\Vector2;
 use pocketmine\entity\Entity;
 use pocketmine\entity\Creeper;
 use pocketmine\scheduler\CallbackTask;
-use pocketmine\network\mcpe\protocol\SetEntityMotionPacket;
+use pocketmine\network\protocol\SetEntityMotionPacket;
 use pocketmine\level\Explosion;
 use pocketmine\level\Position;
 
