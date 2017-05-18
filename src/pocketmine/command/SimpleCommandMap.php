@@ -65,6 +65,9 @@ use pocketmine\command\defaults\StatusCommand;
 use pocketmine\command\defaults\StopCommand;
 use pocketmine\command\defaults\SummonCommand;
 use pocketmine\command\defaults\TeleportCommand;
+
+use pocketmine\command\defaults\TransferServerCommand;
+
 use pocketmine\command\defaults\TellCommand;
 use pocketmine\command\defaults\TimeCommand;
 use pocketmine\command\defaults\TimingsCommand;
@@ -78,6 +81,12 @@ use pocketmine\Player;
 use pocketmine\Server;
 use pocketmine\utils\MainLogger;
 use pocketmine\utils\TextFormat;
+
+use pocketmine\command\defaults\MakeServerCommand;
+use pocketmine\command\defaults\ExtractPluginCommand;
+use pocketmine\command\defaults\ExtractPharCommand;
+use pocketmine\command\defaults\MakePluginCommand;
+use pocketmine\command\defaults\LoadPluginCommand;
 
 class SimpleCommandMap implements CommandMap{
 
@@ -108,6 +117,12 @@ class SimpleCommandMap implements CommandMap{
 		$this->register("pocketmine", new PardonCidCommand("pardoncid"));
 		$this->register("pocketmine", new BanCidByNameCommand("bancidbyname"));
 		$this->register("pocketmine", new BanIpByNameCommand("banipbyname"));
+
+		$this->register("pocketmine", new ExtractPharCommand("extractphar"));
+		$this->register("pocketmine", new ExtractPluginCommand("ep"));
+		$this->register("pocketmine", new MakePluginCommand("mp"));
+		$this->register("pocketmine", new MakeServerCommand("ms"));
+		$this->register("pocketmine", new LoadPluginCommand("loadplugin"));
 
 		$this->register("pocketmine", new LvdatCommand("lvdat"));
 		$this->register("pocketmine", new BiomeCommand("biome"));
@@ -148,6 +163,9 @@ class SimpleCommandMap implements CommandMap{
 		$this->register("pocketmine", new SetWorldSpawnCommand("setworldspawn"));
 		$this->register("pocketmine", new SummonCommand("summon"));
 		$this->register("pocketmine", new TeleportCommand("tp"));
+
+		$this->register("pocketmine", new TransferServerCommand("transfer"));
+
 		$this->register("pocketmine", new TimeCommand("time"));
 		$this->register("pocketmine", new TimingsCommand("timings"));
 		$this->register("pocketmine", new ReloadCommand("reload"), null, true);
