@@ -1507,6 +1507,22 @@ class Server{
 		$this->countBookshelf = $this->getAdvancedProperty("enchantment.count-bookshelf", false);
 
 		$this->allowInventoryCheats = $this->getAdvancedProperty("inventory.allow-cheats", false);
+		$this->aiEnabled = $this->getAdvancedProperty("ai.enable", false);
+		$this->aiConfig = [
+			"cow" => $this->getAdvancedProperty("ai.cow", true),
+			"chicken" => $this->getAdvancedProperty("ai.chicken", true),
+			"zombie" => $this->getAdvancedProperty("ai.zombie", true),
+			"skeleton" => $this->getAdvancedProperty("ai.skeleton", true),
+			"pig" => $this->getAdvancedProperty("ai.pig", true),
+			"sheep" => $this->getAdvancedProperty("ai.sheep", true),
+			"creeper" => $this->getAdvancedProperty("ai.creeper", true),
+			"irongolem" => $this->getAdvancedProperty("ai.iron-golem", true),
+			"snowgolem" => $this->getAdvancedProperty("ai.snow-golem", true),
+			"pigzombie" => $this->getAdvancedProperty("ai.pigzombie", true),
+			"creeperexplode" => $this->getAdvancedProperty("ai.creeper-explode-destroy-block", false),
+			"mobgenerate" => $this->getAdvancedProperty("ai.mobgenerate", false),
+		];
+
 	}
 	
 	/**
