@@ -184,6 +184,8 @@ class Server{
 
 	/** @var CraftingManager */
 	private $craftingManager;
+	
+	private $resourceManager;
 
 	/** @var ConsoleCommandSender */
 	private $consoleSender;
