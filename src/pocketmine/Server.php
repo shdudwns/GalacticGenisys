@@ -105,6 +105,7 @@ use pocketmine\utils\TextFormat;
 use pocketmine\utils\Utils;
 use pocketmine\utils\UUID;
 use pocketmine\utils\VersionString;
+use pocketmine\entity\ai\AIHolder;
 use pocketmine\resourcepacks\ResourcePackManager;
 
 /**
@@ -183,8 +184,6 @@ class Server{
 
 	/** @var CraftingManager */
 	private $craftingManager;
-	
-	private $resourceManager;
 
 	/** @var ConsoleCommandSender */
 	private $consoleSender;
@@ -302,6 +301,10 @@ class Server{
 	public $enchantingTableEnabled = true;
 	public $countBookshelf = false;
 	public $allowInventoryCheats = false;
+	public $aiConfig = [];
+ 	public $aiEnabled = false;
+ 	public $aiHolder = null;
+
 
 	/**
 	 * @return string
@@ -453,7 +456,7 @@ class Server{
 	 * @return string
 	 */
 	public function getIp(){
-		return $this->getConfigString("server-ip", "0.0.0.0");
+		return $this->getConfigString("server-ip", "0.0.0.0"); //getCraftingManager
 	}
 
 	public function getServerUniqueId(){
@@ -496,6 +499,10 @@ class Server{
 	 */
 	public function getGamemode(){
 		return $this->getConfigInt("gamemode", 0) & 0b11;
+		}
+	
+	public function getAIHolder(){
+		return $this->aiHolder;
 	}
 
 	/**
@@ -687,8 +694,8 @@ class Server{
 	public function getCraftingManager(){
 		return $this->craftingManager;
 	}
-	
-	/**
+
+   /**
 	 * @return ResourcePackManager
 	 */
 	public function getResourceManager() : ResourcePackManager{
@@ -698,7 +705,7 @@ class Server{
 	public function getResourcePackManager() : ResourcePackManager{
 	    return $this->resourceManager;
     }
-
+	
 	/**
 	 * @return ServerScheduler
 	 */
@@ -1457,7 +1464,7 @@ class Server{
 		}, $microseconds);
 	}
 
- 	public function about(){
+	public function about(){
 		$string = '
 
 	§3GalacticGenisys§f is a custom version of §bgenisys and pmmp§f, modified by §5GalacticSoftware§f
@@ -1467,9 +1474,8 @@ class Server{
 	';
 	
 		$this->getLogger()->info($string);
-
 	}
-	
+
 	public function loadAdvancedConfig(){
 		$this->playerMsgType = $this->getAdvancedProperty("server.player-msg-type", self::PLAYER_MSG_TYPE_MESSAGE);
 		$this->playerLoginMsg = $this->getAdvancedProperty("server.login-msg", "§3@player joined the game");
@@ -1517,6 +1523,22 @@ class Server{
 		$this->countBookshelf = $this->getAdvancedProperty("enchantment.count-bookshelf", false);
 
 		$this->allowInventoryCheats = $this->getAdvancedProperty("inventory.allow-cheats", false);
+		$this->aiEnabled = $this->getAdvancedProperty("ai.enable", false);
+		$this->aiConfig = [
+			"cow" => $this->getAdvancedProperty("ai.cow", true),
+			"chicken" => $this->getAdvancedProperty("ai.chicken", true),
+			"zombie" => $this->getAdvancedProperty("ai.zombie", true),
+			"skeleton" => $this->getAdvancedProperty("ai.skeleton", true),
+			"pig" => $this->getAdvancedProperty("ai.pig", true),
+			"sheep" => $this->getAdvancedProperty("ai.sheep", true),
+			"creeper" => $this->getAdvancedProperty("ai.creeper", true),
+			"irongolem" => $this->getAdvancedProperty("ai.iron-golem", true),
+			"snowgolem" => $this->getAdvancedProperty("ai.snow-golem", true),
+			"pigzombie" => $this->getAdvancedProperty("ai.pigzombie", true),
+			"creeperexplode" => $this->getAdvancedProperty("ai.creeper-explode-destroy-block", false),
+			"mobgenerate" => $this->getAdvancedProperty("ai.mobgenerate", false),
+		];
+
 	}
 	
 	/**
@@ -1875,7 +1897,7 @@ class Server{
 			}
 
 			$this->enablePlugins(PluginLoadOrder::POSTWORLD);
-
+            if($this->aiEnabled) $this->aiHolder = new AIHolder($this);
 			if($this->dserverConfig["enable"] and ($this->getAdvancedProperty("dserver.server-list", "") != "")) $this->scheduler->scheduleRepeatingTask(new CallbackTask([
 				$this,
 				"updateDServerInfo"
