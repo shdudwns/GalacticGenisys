@@ -106,3 +106,33 @@ dserver:
 inventory:
  #Set this to true if you have problems with anvils. This will process inventory transactions in a vanilla fashion with no anti-cheats or verification.
  allow-cheats: false
+ 
+ 
+  
+ai:
+ #AI switch
+ enable: false
+ #Zombie's AI
+ zombie: true
+ #PigZombie's AI
+ pigzombie: true
+ #the AI of cow and mushroom cow
+ cow: true
+ #Chicken's AI
+ chicken: true
+ #Sheep's AI
+ sheep: true
+ #Pigs' AI
+ pig: true
+ #Skeleton's AI
+ skeleton: true
+ #Creeper's AI
+ creeper: true
+ #Iron golem's AI
+ iron-golem: true
+ #Snow golem's AI
+ snow-golem: true
+ #Destory blocks if creeper exploded
+ creeper-explode-destroy-block: false
+ #Choose if allow mob auto generate
+ mobgenerate: false
