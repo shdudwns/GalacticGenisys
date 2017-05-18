@@ -11,7 +11,7 @@ use pocketmine\entity\Entity;
 use pocketmine\entity\Zombie;
 use pocketmine\entity\Husk;
 use pocketmine\scheduler\CallbackTask;
-use pocketmine\network\mcpe\protocol\SetEntityMotionPacket;
+use pocketmine\network\protocol\SetEntityMotionPacket;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 
