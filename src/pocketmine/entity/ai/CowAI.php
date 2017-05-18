@@ -11,7 +11,7 @@ use pocketmine\entity\Entity;
 use pocketmine\entity\Cow;
 use pocketmine\entity\Mooshroom;
 use pocketmine\scheduler\CallbackTask;
-use pocketmine\network\mcpe\protocol\SetEntityMotionPacket;
+use pocketmine\network\protocol\SetEntityMotionPacket;
 
 class CowAI{
 
