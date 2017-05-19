@@ -113,3 +113,31 @@ dserver:
 inventory:
  #모루와 관련된 문제가 있는 경우 true로 설정하세요. 인벤토리 처리를 vanila fashion (기본 방식)으로 치트 방지나 확인 없이 진행합니다.
  allow-cheats: true
+
+ai:
+ #AI switch
+ enable: false
+ #Zombie's AI
+ zombie: true
+ #PigZombie's AI
+ pigzombie: true
+ #the AI of cow and mushroom cow
+ cow: true
+ #Chicken's AI
+ chicken: true
+ #Sheep's AI
+ sheep: true
+ #Pigs' AI
+ pig: true
+ #Skeleton's AI
+ skeleton: true
+ #Creeper's AI
+ creeper: true
+ #Iron golem's AI
+ iron-golem: true
+ #Snow golem's AI
+ snow-golem: true
+ #Destory blocks if creeper exploded
+ creeper-explode-destroy-block: false
+ #Choose if allow mob auto generate
+ mobgenerate: false
