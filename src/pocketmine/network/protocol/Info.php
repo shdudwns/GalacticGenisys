@@ -33,10 +33,10 @@ interface Info{
 	/**
 	 * Actual Minecraft: PE protocol version
 	 */
-	const CURRENT_PROTOCOL = 107;
-    const ACCEPTED_PROTOCOLS = [107];
-	const MINECRAFT_VERSION = "v1.0.8.1";
-	const MINECRAFT_VERSION_NETWORK = "1.0.8.1";
+	const CURRENT_PROTOCOL = 109;
+    const ACCEPTED_PROTOCOLS = [109];
+	const MINECRAFT_VERSION = "v1.0.9*;
+	const MINECRAFT_VERSION_NETWORK = "1.0.9";
 
 	const LOGIN_PACKET = 0x01;
 	const PLAY_STATUS_PACKET = 0x02;
