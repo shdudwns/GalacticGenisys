@@ -59,6 +59,8 @@ class ZippedResourcePack implements ResourcePack{
 	/** @var string */
 	protected $sha256 = null;
 
+	/** @var resource */
+	protected $fileResource;
 
 	public function __construct(string $zipPath){
 		$this->path = $zipPath;
@@ -84,6 +86,8 @@ class ZippedResourcePack implements ResourcePack{
 		}
 
 		$this->manifest = $manifest;
+
+		$this->fileResource = fopen($zipPath, "rb");
 	}
 
 	public function getPackName() : string{
@@ -104,12 +108,16 @@ class ZippedResourcePack implements ResourcePack{
 
 	public function getSha256(bool $cached = true) : string{
 		if($this->sha256 === null or !$cached){
-			$this->sha256 = openssl_digest(file_get_contents($this->path), "sha256", true);
+			$this->sha256 = hash_file("sha256", $this->path, true);
 		}
 		return $this->sha256;
 	}
 
 	public function getPackChunk(int $start, int $length) : string{
-		return substr(file_get_contents($this->path), $start, $length);
+		fseek($this->fileResource, $start);
+		if(feof($this->fileResource)){
+			throw new \RuntimeException("Requested a resource pack chunk with invalid start offset");
+		}
+		return fread($this->fileResource, $length);
 	}
 }

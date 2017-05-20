@@ -159,6 +159,7 @@ use pocketmine\network\SourceInterface;
 use pocketmine\permission\PermissibleBase;
 use pocketmine\permission\PermissionAttachment;
 use pocketmine\plugin\Plugin;
+use pocketmine\resourcepacks\ResourcePack;
 use pocketmine\tile\ItemFrame;
 use pocketmine\tile\Spawnable;
 use pocketmine\utils\MapUtils;
@@ -1014,8 +1015,6 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 			elseif($this->server->playerMsgType === Server::PLAYER_MSG_TYPE_TIP) $this->server->broadcastTip(str_replace("@player", $this->getName(), $this->server->playerLoginMsg));
 			elseif($this->server->playerMsgType === Server::PLAYER_MSG_TYPE_POPUP) $this->server->broadcastPopup(str_replace("@player", $this->getName(), $this->server->playerLoginMsg));
 		}
-
-		$this->server->addOnlinePlayer($this);
 
 		$this->server->onPlayerLogin($this);
 		$this->spawnToAll();
@@ -2057,6 +2056,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 
 		parent::__construct($this->level, $nbt);
 		$this->loggedIn = true;
+		$this->server->addOnlinePlayer($this);
 
 		$this->server->getPluginManager()->callEvent($ev = new PlayerLoginEvent($this, "Plugin reason"));
 		if($ev->isCancelled()){
