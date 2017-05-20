@@ -2,14 +2,14 @@
 
 /*
  *
- *  _____            _               _____           
- * / ____|          (_)             |  __ \          
- *| |  __  ___ _ __  _ ___ _   _ ___| |__) | __ ___  
- *| | |_ |/ _ \ '_ \| / __| | | / __|  ___/ '__/ _ \ 
+ *  _____            _               _____
+ * / ____|          (_)             |  __ \
+ *| |  __  ___ _ __  _ ___ _   _ ___| |__) | __ ___
+ *| | |_ |/ _ \ '_ \| / __| | | / __|  ___/ '__/ _ \
  *| |__| |  __/ | | | \__ \ |_| \__ \ |   | | | (_) |
- * \_____|\___|_| |_|_|___/\__, |___/_|   |_|  \___/ 
- *                         __/ |                    
- *                        |___/                     
+ * \_____|\___|_| |_|_|___/\__, |___/_|   |_|  \___/
+ *                         __/ |
+ *                        |___/
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -33,9 +33,9 @@ interface Info{
 	/**
 	 * Actual Minecraft: PE protocol version
 	 */
-	const CURRENT_PROTOCOL = 109;
-    const ACCEPTED_PROTOCOLS = [109];
-	const MINECRAFT_VERSION = "v1.0.9*;
+	const CURRENT_PROTOCOL = 107;
+	const ACCEPTED_PROTOCOLS = [107];
+	const MINECRAFT_VERSION ="v1.0.9"; // and 1.0.7, 1.0.8
 	const MINECRAFT_VERSION_NETWORK = "1.0.9";
 
 	const LOGIN_PACKET = 0x01;
