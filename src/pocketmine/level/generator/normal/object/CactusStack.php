@@ -58,12 +58,12 @@ class CactusStack extends Object{
 		return false;
 	}
 
-	public function placeObject(ChunkManager $level, int $x, int $y, int $z){
+	public function placeObject(ChunkManager $level, $x, $y, $z){
 		for($yy = 0; $yy < $this->totalHeight; $yy++){
 			if($level->getBlockIdAt($x, $y + $yy, $z) != Block::AIR){
 				return;
 			}
-			$level->setBlockIdAt($x, $y + $yy, $z, Block::CACTUS);
+			$level->setBlockIdAt($x, $y, $z, Block::CACTUS);
 		}
 	}
 }
