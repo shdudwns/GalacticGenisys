@@ -44,7 +44,7 @@ class BiomeSelector{
 		$this->temperature = new Simplex($random, 2, 1 / 16, 1 / 512);
 		$this->rainfall = new Simplex($random, 2, 1 / 16, 1 / 512);
 	}
-
+	
 	public function lookup($temperature, $rainfall){
 		if($rainfall < 0.25){
 			if($temperature < 0.7){

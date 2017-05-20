@@ -22,9 +22,8 @@
 namespace pocketmine\level\generator\normal\biome;
 
 use pocketmine\block\Sapling;
-use pocketmine\level\generator\normal\populator\Mushroom;
-use pocketmine\level\generator\normal\populator\TallGrass;
-use pocketmine\level\generator\normal\populator\Tree;
+use pocketmine\level\generator\populator\TallGrass;
+use pocketmine\level\generator\populator\Tree;
 
 class ForestBiome extends GrassyBiome{
 
@@ -44,19 +43,17 @@ class ForestBiome extends GrassyBiome{
 
 		$tallGrass = new TallGrass();
 		$tallGrass->setBaseAmount(3);
-		$this->addPopulator($tallGrass);
 
-		$mushroom = new Mushroom();
-		$this->addPopulator($mushroom);
+		$this->addPopulator($tallGrass);
 
 		$this->setElevation(63, 81);
 
 		if($type === self::TYPE_BIRCH){
-			$this->temperature = 0.5;
+			$this->temperature = 0.6;
 			$this->rainfall = 0.5;
 		}else{
 			$this->temperature = 0.7;
-			$this->temperature = 0.8;
+			$this->rainfall = 0.8;
 		}
 	}
 

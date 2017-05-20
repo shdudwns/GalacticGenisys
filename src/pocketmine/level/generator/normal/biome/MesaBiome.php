@@ -1,30 +1,11 @@
 <?php
 
-/*
- *
- *  _____   _____   __   _   _   _____  __    __  _____
- * /  ___| | ____| |  \ | | | | /  ___/ \ \  / / /  ___/
- * | |     | |__   |   \| | | | | |___   \ \/ /  | |___
- * | |  _  |  __|  | |\   | | | \___  \   \  /   \___  \
- * | |_| | | |___  | | \  | | |  ___| |   / /     ___| |
- * \_____/ |_____| |_|  \_| |_| /_____/  /_/     /_____/
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * @author iTX Technologies
- * @link https://itxtech.org
- *
- */
-
 namespace pocketmine\level\generator\normal\biome;
 
 use pocketmine\block\Block;
 use pocketmine\block\StainedClay;
-use pocketmine\level\generator\normal\populator\Cactus;
-use pocketmine\level\generator\normal\populator\DeadBush;
+use pocketmine\level\generator\populator\Cactus;
+use pocketmine\level\generator\populator\DeadBush;
 
 class MesaBiome extends SandyBiome{
 
@@ -78,4 +59,4 @@ class MesaBiome extends SandyBiome{
 	public function getName() : string{
 		return "Mesa";
 	}
-}
+} 
