@@ -1470,8 +1470,9 @@ class Server{
 		$string = '
 
 	§3GalacticGenisys§f is a custom version of §9genisys §fand §bpmmp§f, modified by §5GalacticSoftware§f
-	Version: §6' . $this->getPocketMineVersion() . '§f
+	Version: §a' . $this->getPocketMineVersion() . '§f
 	Target client version: §b' . ProtocolInfo::MINECRAFT_VERSION . '§f
+	PHP binary version: §c'. PHP_VERSION .'§f
 	Source code: §dhttps://github.com/GalacticSoftware/GalacticGenisys§f
 	';
 

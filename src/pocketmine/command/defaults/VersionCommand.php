@@ -47,21 +47,18 @@ class VersionCommand extends VanillaCommand{
 		if(\count($args) === 0){
 			$sender->sendMessage(new TranslationContainer("pocketmine.server.info.extended.title"));
 			$sender->sendMessage(new TranslationContainer("pocketmine.server.info.extended1", [
-											$sender->getServer()->getName(), 
+											$sender->getServer()->getName(),
 											$sender->getServer()->getFormattedVersion("-"),
 											$sender->getServer()->getCodename()
 			]));
 			$sender->sendMessage(new TranslationContainer("pocketmine.server.info.extended2", [
-											phpversion()
+											PHP_VERSION
 			]));
 			$sender->sendMessage(new TranslationContainer("pocketmine.server.info.extended3", [
 											$sender->getServer()->getApiVersion()
-			
 			]));
 			$sender->sendMessage(new TranslationContainer("pocketmine.server.info.extended4", [
-											$sender->getServer()->getVersion()											 
-			]));
-			$sender->sendMessage(new TranslationContainer("pocketmine.server.info.extended5", [
+											$sender->getServer()->getVersion(),
 											Info::CURRENT_PROTOCOL
 			]));
 		}else{
