@@ -33,7 +33,7 @@ class MainLogger extends \AttachableThreadedLogger{
 	private $logResource;
 	/** @var MainLogger */
 	public static $logger = null;
-	
+
 	private $consoleCallback;
 
 	/** Extra Settings */
@@ -218,8 +218,7 @@ class MainLogger extends \AttachableThreadedLogger{
 			}
 		}
 
-		$message = TextFormat::toANSI(TextFormat::AQUA . "[" . date("H:i:s", $now) . "] " . TextFormat::RESET . $color . "[" . $threadName . "/" . $prefix . "]:" . " " . $message . TextFormat::RESET);
-		//$message = TextFormat::toANSI(TextFormat::AQUA . "[" . date("H:i:s") . "] ". TextFormat::RESET . $color ."<".$prefix . ">" . " " . $message . TextFormat::RESET);
+		$message = TextFormat::toANSI(TextFormat::DARK_PURPLE . date("H:i:s", $now) ."││" .$color . $threadName . "│" . $prefix . " > " . $message . TextFormat::RESET);
 		$cleanMessage = TextFormat::clean($message);
 
 		if(!Terminal::hasFormattingCodes()){
@@ -306,7 +305,7 @@ class MainLogger extends \AttachableThreadedLogger{
 	public function setWrite($write){
 		$this->write = $write;
 	}
-	
+
 	public function setConsoleCallback($callback){
 		$this->consoleCallback = $callback;
 	}
