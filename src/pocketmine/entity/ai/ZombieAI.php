@@ -50,6 +50,10 @@ class ZombieAI{
 				$this,
 				"ZombieFire"
 			] ), 40);
+			/*$this->plugin->getServer()->getScheduler ()->scheduleRepeatingTask ( new CallbackTask ( [
+				$this,
+				"array_clear"
+			] ), 20 * 5);*/
 		}
 	}
 
@@ -256,7 +260,7 @@ class ZombieAI{
 							$zom['canjump'] = true;
 
 							//僵尸碰撞检测 by boybook
-		
+							/*
 							foreach ($level->getEntities() as $zo0) {
 								if ($zo0 instanceof Zombie and !($zo0 == $zo)) {
 									if ($zo->distance($zo0) <= $this->width * 2) {
@@ -279,7 +283,7 @@ class ZombieAI{
 									}
 								}
 
-							}
+							}*/
 
 							if ($zom['IsChasing'] !== false) {
 								//echo ("是属于仇恨模式\n");
@@ -330,9 +334,9 @@ $xxx =0;$zzz=0;
 									$pos = new Vector3 ($zo->getX() + $xxx, $zo->getY() + 1, $zo->getZ()+  $zzz);  //目标坐标
 		
 			//用来写僵尸宽度的
-									$v = $this->zo_hate_v/2;
-									$pos_front = new Vector3 ($zo->getX() + ($xxx/$v*($v+$this->width)), $zo->getY() + 1, $zo->getZ() + ($zzz/$v*($v+$this->width)));  //前方坐标
-									$pos_back = new Vector3 ($zo->getX() + (-$xxx/$v*(-$v-$this->width)), $zo->getY() + 1, $zo->getZ() + (-$zzz/$v*(-$v-$this->width)));  //后方坐标
+									//$v = $this->zo_hate_v/2;
+									//$pos_front = new Vector3 ($zo->getX() + ($xxx/$v*($v+$this->width)), $zo->getY() + 1, $zo->getZ() + ($zzz/$v*($v+$this->width)));  //前方坐标
+									//$pos_back = new Vector3 ($zo->getX() + (-$xxx/$v*(-$v-$this->width)), $zo->getY() + 1, $zo->getZ() + (-$zzz/$v*(-$v-$this->width)));  //后方坐标
 									$zy = $this->AIHolder->ifjump($zo->getLevel(), $pos, true);
 
 									if ($zy === false or ($zy !== false and $this->AIHolder->ifjump($zo->getLevel(), $pos0, true, true) == 'fall')) {  //前方不可前进
@@ -414,9 +418,9 @@ $xxx =0;$zzz=0;
 						if ($zom['drop'] !== false) {
 							
 						
-//							$zo->motionY=	$zom['drop'] = $zo->onGround?-0.04,-(abs(1+$zo->motionY)*1.5-1);
+							//$zo->motionY=	$zom['drop'] = $zo->onGround?-0.04,-(abs(1+$zo->motionY)*1.5-1);
 						$zom['drop']+=0.01;
-							print($zom['drop']);
+						//	print($zom['drop']);
 						} else {
 							$drop = 0;
 							
@@ -528,7 +532,7 @@ $xxx =0;$zzz=0;
 		foreach ($this->AIHolder->getServer()->getLevels() as $level) {
 			foreach ($level->getEntities() as $zo){
 				if ($zo instanceof Zombie and !($zo instanceof Husk)) {
-				//	var_dump($p->getLevel()->getTime());
+					//var_dump($p->getLevel()->getTime());
 					/* Don't use time directly
 					 * Instead, get remainder of current time divided by 24,000
 					 * This tells us the time of day, which is what we really need
