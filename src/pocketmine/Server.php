@@ -184,7 +184,7 @@ class Server{
 
 	/** @var CraftingManager */
 	private $craftingManager;
-	
+
 	private $resourceManager;
 
 	/** @var ConsoleCommandSender */
@@ -502,7 +502,7 @@ class Server{
 	public function getGamemode(){
 		return $this->getConfigInt("gamemode", 0) & 0b11;
 		}
-	
+
 	public function getAIHolder(){
 		return $this->aiHolder;
 	}
@@ -707,7 +707,7 @@ class Server{
 	public function getResourcePackManager() : ResourcePackManager{
 	    return $this->resourceManager;
     }
-	
+
 	/**
 	 * @return ServerScheduler
 	 */
@@ -1469,12 +1469,12 @@ class Server{
 	public function about(){
 		$string = '
 
-	§3GalacticGenisys§f is a custom version of §bgenisys and pmmp§f, modified by §5GalacticSoftware§f
+	§3GalacticGenisys§f is a custom version of §9genisys §fand §bpmmp§f, modified by §5GalacticSoftware§f
 	Version: §6' . $this->getPocketMineVersion() . '§f
 	Target client version: §b' . ProtocolInfo::MINECRAFT_VERSION . '§f
 	Source code: §dhttps://github.com/GalacticSoftware/GalacticGenisys§f
 	';
-	
+
 		$this->getLogger()->info($string);
 	}
 
@@ -1542,7 +1542,7 @@ class Server{
 		];
 
 	}
-	
+
 	/**
 	 * @deprecated Use SynapsePM plugin instead
 	 * @return bool
@@ -1809,7 +1809,7 @@ class Server{
 			EnchantmentLevelTable::init();
 			Color::init();
 			$this->craftingManager = new CraftingManager();
-			
+
 			$this->resourceManager = new ResourcePackManager($this, $this->getDataPath() . "resource_packs" . DIRECTORY_SEPARATOR);
 
 			$this->pluginManager = new PluginManager($this, $this->commandMap);
@@ -1901,7 +1901,7 @@ class Server{
 			}
 			$this->netherLevel = $this->getLevelByName($this->netherName);
 		}
-		
+
 			if($this->getProperty("ticks-per.autosave", 6000) > 0){
 				$this->autoSaveTicks = (int) $this->getProperty("ticks-per.autosave", 6000);
 			}
