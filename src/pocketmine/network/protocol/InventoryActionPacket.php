@@ -24,21 +24,26 @@ namespace pocketmine\network\protocol;
 #include <rules/DataPacket.h>
 
 class InventoryActionPacket extends DataPacket{
+
 	const NETWORK_ID = Info::INVENTORY_ACTION_PACKET;
 
-	public $uvarint0;
+	public $unknown;
 	public $item;
-	public $varint1;
-	public $varint2;
 
 	public function decode(){
 
 	}
-
+	
 	public function encode(){
-		$this->putUnsignedVarInt($this->uvarint0);
+		$this->putUnsignedVarInt($this->unknown);
 		$this->putSlot($this->item);
-		$this->putVarInt($this->varint1);
-		$this->putVarInt($this->varint2);
 	}
+
+	/**
+	 * @return PacketName|string
+     */
+	public function getName(){
+		return "InventoryActionPacket";
+	}
+
 }

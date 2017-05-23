@@ -25,6 +25,7 @@ namespace pocketmine\network\protocol;
 
 
 class AdventureSettingsPacket extends DataPacket{
+
 	const NETWORK_ID = Info::ADVENTURE_SETTINGS_PACKET;
 
 	const PERMISSION_NORMAL = 0;
@@ -38,10 +39,10 @@ class AdventureSettingsPacket extends DataPacket{
 	public $noPvm = false;
 	public $noMvp = false;
 
-	public $autoJump = true;
+	public $autoJump = false;
 	public $allowFlight = false;
 	public $noClip = false;
-	public $worldBuilder = false;
+    public $worldBuilder = false;
 	public $isFlying = false;
 
 	/*
@@ -54,7 +55,7 @@ class AdventureSettingsPacket extends DataPacket{
 	0x00000020 auto_jump
 	0x00000040 allow_fly
 	0x00000080 noclip
-	0x00000100 world_builder (seems to allow building even if the world_immutable flag is set (???))
+	0x00000100 world_builder
 	0x00000200 is_flying
 	*/
 
@@ -73,7 +74,7 @@ class AdventureSettingsPacket extends DataPacket{
 		$this->autoJump       = (bool) ($this->flags & (1 << 5));
 		$this->allowFlight    = (bool) ($this->flags & (1 << 6));
 		$this->noClip         = (bool) ($this->flags & (1 << 7));
-		$this->worldBuilder   = (bool) ($this->flags & (1 << 8));
+        $this->worldBuilder   = (bool) ($this->flags & (1 << 8));
 		$this->isFlying       = (bool) ($this->flags & (1 << 9));
 	}
 
@@ -88,11 +89,18 @@ class AdventureSettingsPacket extends DataPacket{
 		$this->flags |= ((int) $this->autoJump)     << 5;
 		$this->flags |= ((int) $this->allowFlight)  << 6;
 		$this->flags |= ((int) $this->noClip)       << 7;
-		$this->flags |= ((int) $this->worldBuilder) << 8;
+        $this->flags |= ((int) $this->worldBuilder) << 8;
 		$this->flags |= ((int) $this->isFlying)     << 9;
 
 		$this->putUnsignedVarInt($this->flags);
 		$this->putUnsignedVarInt($this->userPermission);
+	}
+
+	/**
+	 * @return PacketName|string
+     */
+	public function getName(){
+		return "AdventureSettingsPacket";
 	}
 
 }

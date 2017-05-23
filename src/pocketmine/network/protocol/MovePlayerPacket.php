@@ -25,6 +25,7 @@ namespace pocketmine\network\protocol;
 
 
 class MovePlayerPacket extends DataPacket{
+
 	const NETWORK_ID = Info::MOVE_PLAYER_PACKET;
 
 	const MODE_NORMAL = 0;
@@ -40,6 +41,11 @@ class MovePlayerPacket extends DataPacket{
 	public $pitch;
 	public $mode = self::MODE_NORMAL;
 	public $onGround;
+
+	public function clean(){
+		$this->teleport = false;
+		return parent::clean();
+	}
 
 	public function decode(){
 		$this->eid = $this->getEntityId(); //EntityRuntimeID
@@ -60,6 +66,13 @@ class MovePlayerPacket extends DataPacket{
 		$this->putLFloat($this->bodyYaw); //TODO
 		$this->putByte($this->mode);
 		$this->putBool($this->onGround);
+	}
+
+	/**
+	 * @return PacketName|string
+     */
+	public function getName(){
+		return "MovePlayerPacket";
 	}
 
 }

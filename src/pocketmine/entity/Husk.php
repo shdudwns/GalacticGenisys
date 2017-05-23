@@ -21,8 +21,8 @@
 
 namespace pocketmine\entity;
 
-use pocketmine\network\protocol\AddEntityPacket;
 use pocketmine\Player;
+use pocketmine\network\protocol\AddEntityPacket;
 
 class Husk extends Zombie{
 	const NETWORK_ID = 47;

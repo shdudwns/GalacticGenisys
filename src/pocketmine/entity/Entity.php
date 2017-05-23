@@ -97,7 +97,7 @@ abstract class Entity extends Location implements Metadatable{
 	/* 27 (byte) player-specific flags
 	 * 28 (int) player "index"?
 	 * 29 (block coords) bed position */
-	const DATA_LEAD_HOLDER_EID = 38; //long
+	const DATA_LEAD_HOLDER_EID = 38; const DATA_LEAD_HOLDER = 38; //long
 	const DATA_SCALE = 39; //float
 	const DATA_INTERACTIVE_TAG = 40; //string (button text)
 	/* 41 (long) */
@@ -180,7 +180,6 @@ abstract class Entity extends Location implements Metadatable{
 		//Entity::registerEntity(EnderDragon::class);
 		Entity::registerEntity(EnderPearl::class);
 		Entity::registerEntity(FallingSand::class);
-		Entity::registerEntity(FireBall::class);
 		Entity::registerEntity(FishingHook::class);
 		Entity::registerEntity(Ghast::class);
 		Entity::registerEntity(Horse::class);
@@ -332,9 +331,6 @@ abstract class Entity extends Location implements Metadatable{
 
 
 	protected $riding = null;
-
-	/** @var PressurePlate */
-	protected $activatedPressurePlates = [];
 
 	public $dropExp = [0, 0];
 

@@ -21,10 +21,8 @@
 
 namespace pocketmine\network\protocol;
 
-#include <rules/DataPacket.h>
-
-
 class SetEntityDataPacket extends DataPacket{
+
 	const NETWORK_ID = Info::SET_ENTITY_DATA_PACKET;
 
 	public $eid;
@@ -38,6 +36,13 @@ class SetEntityDataPacket extends DataPacket{
 		$this->reset();
 		$this->putEntityId($this->eid);
 		$this->putEntityMetadata($this->metadata);
+	}
+
+	/**
+	 * @return PacketName|string
+     */
+	public function getName(){
+		return "SetEntityDataPacket";
 	}
 
 }

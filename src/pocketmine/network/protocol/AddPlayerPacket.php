@@ -21,9 +21,8 @@
 
 namespace pocketmine\network\protocol;
 
-#include <rules/DataPacket.h>
-
 class AddPlayerPacket extends DataPacket{
+
 	const NETWORK_ID = Info::ADD_PLAYER_PACKET;
 
 	public $uuid;
@@ -58,6 +57,13 @@ class AddPlayerPacket extends DataPacket{
 		$this->putLFloat($this->yaw);
 		$this->putSlot($this->item);
 		$this->putEntityMetadata($this->metadata);
+	}
+
+	/**
+	 * @return PacketName|string
+     */
+	public function getName(){
+		return "AddPlayerPacket";
 	}
 
 }

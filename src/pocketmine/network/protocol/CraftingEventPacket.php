@@ -23,17 +23,15 @@ namespace pocketmine\network\protocol;
 
 #include <rules/DataPacket.h>
 
-use pocketmine\item\Item;
 
 class CraftingEventPacket extends DataPacket{
+
 	const NETWORK_ID = Info::CRAFTING_EVENT_PACKET;
 
 	public $windowId;
 	public $type;
 	public $id;
-	/** @var Item[] */
 	public $input = [];
-	/** @var Item[] */
 	public $output = [];
 
 	public function clean(){
@@ -60,6 +58,13 @@ class CraftingEventPacket extends DataPacket{
 
 	public function encode(){
 
+	}
+
+	/**
+	 * @return PacketName|string
+     */
+	public function getName(){
+		return "CraftingEventPacket";
 	}
 
 }

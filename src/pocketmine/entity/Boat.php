@@ -21,15 +21,15 @@
 
 namespace pocketmine\entity;
 
-use pocketmine\event\entity\EntityDamageEvent;
-use pocketmine\item\Item as ItemItem;
 use pocketmine\level\Level;
-use pocketmine\math\Vector3;
-use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\nbt\tag\IntTag;
 use pocketmine\network\protocol\AddEntityPacket;
-use pocketmine\network\protocol\EntityEventPacket;
 use pocketmine\Player;
+use pocketmine\math\Vector3;
+use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\network\protocol\EntityEventPacket;
+use pocketmine\item\Item as ItemItem;
+use pocketmine\nbt\tag\CompoundTag;
 
 class Boat extends Vehicle{
 	const NETWORK_ID = 90;

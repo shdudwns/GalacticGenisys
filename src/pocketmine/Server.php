@@ -23,7 +23,7 @@ namespace pocketmine;
 
 use pocketmine\block\Block;
 use pocketmine\command\CommandReader;
-use pocketmine\command\CommandSender;
+use pocketmine\command\CommandSender; //getInventorySlots
 use pocketmine\command\ConsoleCommandSender;
 use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\command\SimpleCommandMap;
@@ -434,6 +434,13 @@ class Server{
 	 */
 	public function getPort(){
 		return $this->getConfigInt("server-port", 19132);
+	}
+
+	/**
+	 * @return int
+	 */
+	public  function  getInventorySlots() {
+		return $this->getConfigInt("Inventory-slots", 36);
 	}
 
 	/**
