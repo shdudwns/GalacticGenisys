@@ -29,8 +29,9 @@ use pocketmine\level\Level;
 use pocketmine\math\Vector3;
 use pocketmine\nbt\NBT;
 use pocketmine\nbt\tag\CompoundTag;
-use pocketmine\nbt\tag\IntTag;
 use pocketmine\nbt\tag\ListTag;
+use pocketmine\nbt\tag\IntTag;
+
 use pocketmine\nbt\tag\StringTag;
 
 class Chest extends Spawnable implements InventoryHolder, Container, Nameable{

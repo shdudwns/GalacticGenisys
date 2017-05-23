@@ -24,15 +24,15 @@ namespace pocketmine\tile;
 use pocketmine\entity\Entity;
 use pocketmine\event\entity\EntityGenerateEvent;
 use pocketmine\item\Item;
-use pocketmine\level\format\Chunk;
 use pocketmine\level\Level;
 use pocketmine\math\Vector3;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\nbt\tag\DoubleTag;
+use pocketmine\nbt\tag\ListTag;
 use pocketmine\nbt\tag\FloatTag;
 use pocketmine\nbt\tag\IntTag;
-use pocketmine\nbt\tag\ListTag;
 use pocketmine\nbt\tag\StringTag;
+use pocketmine\level\format\Chunk;
 use pocketmine\Player;
 
 class MobSpawner extends Spawnable{
@@ -121,8 +121,8 @@ class MobSpawner extends Spawnable{
 		$hasPlayer = false;
 		$count = 0;
 		foreach($this->getLevel()->getEntities() as $e){
-			if($e instanceof Player){
-				if($e->distance($this->getBlock()) <= 15) $hasPlayer = true;
+			if(!empty($this->getLevel()->getChunkPlayers($this->getX(), $this->getZ()))){
+				$hasPlayer = true;
 			}
 			if($e::NETWORK_ID == $this->getEntityId()){
 				$count++;

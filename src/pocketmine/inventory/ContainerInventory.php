@@ -22,6 +22,7 @@
 namespace pocketmine\inventory;
 
 use pocketmine\math\Vector3;
+
 use pocketmine\network\protocol\ContainerClosePacket;
 use pocketmine\network\protocol\ContainerOpenPacket;
 use pocketmine\Player;
@@ -32,7 +33,6 @@ abstract class ContainerInventory extends BaseInventory{
 		$pk = new ContainerOpenPacket();
 		$pk->windowid = $who->getWindowId($this);
 		$pk->type = $this->getType()->getNetworkType();
-		$pk->slots = $this->getSize();
 		$holder = $this->getHolder();
 		if($holder instanceof Vector3){
 			$pk->x = $holder->getX();

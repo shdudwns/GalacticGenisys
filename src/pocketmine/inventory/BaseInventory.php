@@ -1,5 +1,4 @@
 <?php
-
 /*
  *
  *  ____            _        _   __  __ _                  __  __ ____
@@ -114,10 +113,10 @@ abstract class BaseInventory implements Inventory{
 		return $this->slots;
 	}
 
-	/**
-	 * @param Item[] $items
-	 * @param bool   $send
-	 */
+    /**
+     * @param Item[] $items
+     * @param bool $send
+     */
 	public function setContents(array $items, $send = true){
 		if(count($items) > $this->size){
 			$items = array_slice($items, 0, $this->size, true);
@@ -180,9 +179,9 @@ abstract class BaseInventory implements Inventory{
 
 	public function slotContains($slot, Item $item, $matchCount = false){
 		if($matchCount){
-			return $this->getItem($slot)->deepEquals($item, true, true, true);
+			return $this->getItem($slot)->equals($item, true, true, true);
 		}else{
-			return $this->getItem($slot)->deepEquals($item) and $this->getItem($slot)->getCount() >= $item->getCount();
+			return $this->getItem($slot)->equals($item) and $this->getItem($slot)->getCount() >= $item->getCount();
 		}
 	}
 

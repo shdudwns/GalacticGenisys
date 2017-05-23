@@ -22,10 +22,7 @@
 namespace pocketmine\tile;
 
 use pocketmine\level\Level;
-use pocketmine\nbt\tag\ByteTag;
-use pocketmine\nbt\tag\CompoundTag;
-use pocketmine\nbt\tag\IntTag;
-use pocketmine\nbt\tag\StringTag;
+use pocketmine\nbt\tag\{ByteTag, CompoundTag, IntTag, StringTag};
 
 class Skull extends Spawnable{
 
@@ -42,6 +39,9 @@ class Skull extends Spawnable{
 		}
 		if(!isset($nbt->Rot) or !($nbt->Rot instanceof ByteTag)) {
 			$nbt->Rot = new ByteTag("Rot", 0);
+		}
+		if(!isset($nbt->MouthMoving)){
+            $nbt->MouthMoving = new ByteTag("MouthMoving", (bool) false);
 		}
 		parent::__construct($level, $nbt);
 	}
@@ -69,6 +69,7 @@ class Skull extends Spawnable{
 			new StringTag("id", Tile::SKULL),
 			$this->namedtag->SkullType,
 			$this->namedtag->Rot,
+			$this->namedtag->MouthMoving,
 			new IntTag("x", (int)$this->x),
 			new IntTag("y", (int)$this->y),
 			new IntTag("z", (int)$this->z),

@@ -22,8 +22,11 @@
 namespace pocketmine\inventory;
 
 use pocketmine\item\Item;
+use pocketmine\item\EnchantedBook;
 use pocketmine\level\Position;
 use pocketmine\Player;
+use pocketmine\Server;
+use pocketmine\event\inventory\AnvilProcessEvent;
 
 class AnvilInventory extends TemporaryInventory{
 
@@ -37,8 +40,8 @@ class AnvilInventory extends TemporaryInventory{
 	}
 
 	/**
-	 * @return FakeBlockMenu
-	 */
+	 * @return FakeBlockMenu|InventoryHolder
+     */
 	public function getHolder(){
 		return $this->holder;
 	}
@@ -48,7 +51,7 @@ class AnvilInventory extends TemporaryInventory{
 	}
 
 	public function onRename(Player $player, Item $resultItem) : bool{
-		if(!$resultItem->deepEquals($this->getItem(self::TARGET), true, false, true)){
+		if(!$resultItem->equals($this->getItem(self::TARGET), true, false, true)){
 			//Item does not match target item. Everything must match except the tags.
 			return false;
 		}
@@ -66,6 +69,33 @@ class AnvilInventory extends TemporaryInventory{
 			$player->getFloatingInventory()->addItem($resultItem);
 		}
 		return true;
+	}
+
+	public function process(Player $player, Item $target, Item $sacrifice){
+		$resultItem = clone $target;
+		Server::getInstance()->getPluginManager()->callEvent($ev = new AnvilProcessEvent($this));
+		if($ev->isCancelled()){
+			$this->clearAll();
+			return false;
+		}
+		if($sacrifice instanceof EnchantedBook && $sacrifice->hasEnchantments()){ //Enchanted Books!
+			foreach($sacrifice->getEnchantments() as $enchant){
+				$resultItem->addEnchantment($enchant);
+			}
+
+			if($player->getXpLevel() < $resultItem->getRepairCost()){ //Not enough exp
+				return false;
+			}
+			$player->takeXpLevel($resultItem->getRepairCost());
+
+			$this->clearAll();
+			if(!$player->getServer()->allowInventoryCheats and !$player->isCreative()){
+				if(!$player->getFloatingInventory()->canAddItem($resultItem)){
+					return false;
+				}
+				$player->getFloatingInventory()->addItem($resultItem);
+			}
+		}
 	}
 
 	public function processSlotChange(Transaction $transaction): bool{
