@@ -11,3 +11,4 @@ NOTE: The master branch is the only officially supported branch. All other branc
 
 
 
+We do not have many helpers so if you would like to help please ask.
