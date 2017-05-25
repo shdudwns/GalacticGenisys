@@ -1,2 +1,2 @@
-# Languages Files
-Languages files with contribution of our developer and Tesseract
+# Tesseract-Lang
+Tesseract's language files
