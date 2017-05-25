@@ -157,20 +157,19 @@ class Utils{
 
 	}
 
-	/**
-	 * Returns the current Operating System
-	 * Windows => win
-	 * MacOS => mac
-	 * iOS => ios
-	 * Android => android
-	 * Linux => Linux
-	 * BSD => bsd
-	 * Other => other
-	 *
-	 * @param bool $recalculate
-	 *
-	 * @return string
-	 */
+    /**
+     * Returns the current Operating System
+     * Windows => win
+     * MacOS => mac
+     * iOS => ios
+     * Android => android
+     * Linux => Linux
+     * BSD => bsd
+     * Other => other
+     *
+     * @param bool $recalculate
+     * @return string
+     */
 	public static function getOS($recalculate = false){
 		if(self::$os === null or $recalculate){
 			$uname = php_uname("s");
@@ -331,6 +330,30 @@ class Utils{
 		}
 
 		return preg_replace('#([^\x20-\x7E])#', '.', $str);
+	}
+
+	/**
+	 * This function tries to get all the entropy available in PHP, and distills it to get a good RNG.
+	 *
+	 * This function simply forwards to the PHP random_bytes function.
+	 *
+	 * @param int    $length       default 16, Number of bytes to generate
+	 * @param bool   $secure       default true, Generate secure distilled bytes, slower
+	 * @param bool   $raw          default true, returns a binary string if true, or an hexadecimal one
+	 * @param string $startEntropy default null, adds more initial entropy
+	 * @param int    &$rounds      Will be set to the number of rounds taken
+	 * @param int    &$drop        Will be set to the amount of dropped bytes
+	 *
+	 * @deprecated prefer PHP 7 random_bytes()
+	 * @return string
+	 */
+	public static function getRandomBytes($length = 16, $secure = true, $raw = true, $startEntropy = "", &$rounds = 0, &$drop = 0){
+		$raw_output = random_bytes($length);
+		if ($raw) {
+			return $raw_output;
+		} else {
+			return bin2hex($raw_output);
+		}
 	}
 
 	/*

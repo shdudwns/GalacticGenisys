@@ -32,11 +32,13 @@ class Tree extends VariableAmountPopulator{
 	/** @var ChunkManager */
 	private $level;
 
+
 	private $type;
 
 	public function __construct($type = Sapling::OAK){
 		$this->type = $type;
 	}
+
 
 	public function populate(ChunkManager $level, $chunkX, $chunkZ, Random $random){
 		$this->level = $level;

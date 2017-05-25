@@ -30,7 +30,7 @@ interface CommandExecutor{
 	 * @param string        $label
 	 * @param string[]      $args
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args);
 

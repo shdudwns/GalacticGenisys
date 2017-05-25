@@ -52,7 +52,7 @@ class RegisteredListener{
 	 * @param EventExecutor  $executor
 	 * @param int            $priority
 	 * @param Plugin         $plugin
-	 * @param bool           $ignoreCancelled
+	 * @param boolean        $ignoreCancelled
 	 * @param TimingsHandler $timings
 	 */
 	public function __construct(Listener $listener, EventExecutor $executor, $priority, Plugin $plugin, $ignoreCancelled, TimingsHandler $timings){

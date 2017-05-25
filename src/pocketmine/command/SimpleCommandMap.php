@@ -21,22 +21,18 @@
 
 namespace pocketmine\command;
 
+use pocketmine\command\defaults\BanCommand;
 use pocketmine\command\defaults\BanCidByNameCommand;
 use pocketmine\command\defaults\BanCidCommand;
-use pocketmine\command\defaults\BanCommand;
 use pocketmine\command\defaults\BanIpByNameCommand;
 use pocketmine\command\defaults\BanIpCommand;
 use pocketmine\command\defaults\BanListCommand;
-use pocketmine\command\defaults\BiomeCommand;
-use pocketmine\command\defaults\CaveCommand;
-use pocketmine\command\defaults\ChunkInfoCommand;
 use pocketmine\command\defaults\DefaultGamemodeCommand;
 use pocketmine\command\defaults\DeopCommand;
 use pocketmine\command\defaults\DifficultyCommand;
 use pocketmine\command\defaults\DumpMemoryCommand;
 use pocketmine\command\defaults\EffectCommand;
 use pocketmine\command\defaults\EnchantCommand;
-use pocketmine\command\defaults\FillCommand;
 use pocketmine\command\defaults\GamemodeCommand;
 use pocketmine\command\defaults\GarbageCollectorCommand;
 use pocketmine\command\defaults\GiveCommand;
@@ -44,11 +40,10 @@ use pocketmine\command\defaults\HelpCommand;
 use pocketmine\command\defaults\KickCommand;
 use pocketmine\command\defaults\KillCommand;
 use pocketmine\command\defaults\ListCommand;
-use pocketmine\command\defaults\LvdatCommand;
 use pocketmine\command\defaults\MeCommand;
 use pocketmine\command\defaults\OpCommand;
-use pocketmine\command\defaults\PardonCidCommand;
 use pocketmine\command\defaults\PardonCommand;
+use pocketmine\command\defaults\PardonCidCommand;//TODO Add back
 use pocketmine\command\defaults\PardonIpCommand;
 use pocketmine\command\defaults\ParticleCommand;
 use pocketmine\command\defaults\PluginsCommand;
@@ -65,28 +60,27 @@ use pocketmine\command\defaults\StatusCommand;
 use pocketmine\command\defaults\StopCommand;
 use pocketmine\command\defaults\SummonCommand;
 use pocketmine\command\defaults\TeleportCommand;
-
-use pocketmine\command\defaults\TransferServerCommand;
-
 use pocketmine\command\defaults\TellCommand;
 use pocketmine\command\defaults\TimeCommand;
 use pocketmine\command\defaults\TimingsCommand;
+use pocketmine\command\defaults\TitleCommand;
+use pocketmine\command\defaults\TransferCommand;
 use pocketmine\command\defaults\VanillaCommand;
 use pocketmine\command\defaults\VersionCommand;
 use pocketmine\command\defaults\WeatherCommand;
 use pocketmine\command\defaults\WhitelistCommand;
 use pocketmine\command\defaults\XpCommand;
+
 use pocketmine\event\TranslationContainer;
 use pocketmine\Player;
 use pocketmine\Server;
 use pocketmine\utils\MainLogger;
 use pocketmine\utils\TextFormat;
 
-use pocketmine\command\defaults\MakeServerCommand;
-use pocketmine\command\defaults\ExtractPluginCommand;
-use pocketmine\command\defaults\ExtractPharCommand;
 use pocketmine\command\defaults\MakePluginCommand;
+use pocketmine\command\defaults\MakeServerCommand;
 use pocketmine\command\defaults\LoadPluginCommand;
+use pocketmine\command\defaults\ExtractPluginCommand;
 
 class SimpleCommandMap implements CommandMap{
 
@@ -113,24 +107,11 @@ class SimpleCommandMap implements CommandMap{
 	private function setDefaultCommands(){
 		$this->register("pocketmine", new WeatherCommand("weather"));
 
-		$this->register("pocketmine", new BanCidCommand("bancid"));
-		$this->register("pocketmine", new PardonCidCommand("pardoncid"));
-		$this->register("pocketmine", new BanCidByNameCommand("bancidbyname"));
 		$this->register("pocketmine", new BanIpByNameCommand("banipbyname"));
-
-		$this->register("pocketmine", new ExtractPharCommand("extractphar"));
-		$this->register("pocketmine", new ExtractPluginCommand("ep"));
-		$this->register("pocketmine", new MakePluginCommand("mp"));
-		$this->register("pocketmine", new MakeServerCommand("ms"));
-		$this->register("pocketmine", new LoadPluginCommand("loadplugin"));
-
-		$this->register("pocketmine", new LvdatCommand("lvdat"));
-		$this->register("pocketmine", new BiomeCommand("biome"));
-		$this->register("pocketmine", new CaveCommand("cave"));
-		$this->register("pocketmine", new ChunkInfoCommand("chunkinfo"));
+		$this->register("pocketmine", new BanCidByNameCommand("bancidbyname"));
+		$this->register("pocketmine", new BanCidCommand("bancid"));
 
 		$this->register("pocketmine", new VersionCommand("version"));
-		$this->register("pocketmine", new FillCommand("fill"));
 		$this->register("pocketmine", new PluginsCommand("plugins"));
 		$this->register("pocketmine", new SeedCommand("seed"));
 		$this->register("pocketmine", new HelpCommand("help"), null, true);
@@ -145,6 +126,7 @@ class SimpleCommandMap implements CommandMap{
 		$this->register("pocketmine", new SayCommand("say"));
 		$this->register("pocketmine", new MeCommand("me"));
 		$this->register("pocketmine", new ListCommand("list"));
+		$this->register("pocketmine", new TitleCommand("title"));
 		$this->register("pocketmine", new DifficultyCommand("difficulty"));
 		$this->register("pocketmine", new KickCommand("kick"));
 		$this->register("pocketmine", new OpCommand("op"));
@@ -163,15 +145,17 @@ class SimpleCommandMap implements CommandMap{
 		$this->register("pocketmine", new SetWorldSpawnCommand("setworldspawn"));
 		$this->register("pocketmine", new SummonCommand("summon"));
 		$this->register("pocketmine", new TeleportCommand("tp"));
-
-		$this->register("pocketmine", new TransferServerCommand("transfer"));
-
 		$this->register("pocketmine", new TimeCommand("time"));
 		$this->register("pocketmine", new TimingsCommand("timings"));
+		$this->register("pocketmine", new TransferCommand("transferserver"));
 		$this->register("pocketmine", new ReloadCommand("reload"), null, true);
 		$this->register("pocketmine", new XpCommand("xp"));
 		$this->register("pocketmine", new SetBlockCommand("setblock"));
-
+		
+		$this->register("pocketmine", new MakePluginCommand("mp"));
+		$this->register("pocketmine", new MakeServerCommand("ms"));
+		$this->register("pocketmine", new ExtractPluginCommand("ep"));
+		
 		if($this->server->getProperty("debug.commands", false)){
 			$this->register("pocketmine", new StatusCommand("status"), null, true);
 			$this->register("pocketmine", new GarbageCollectorCommand("gc"), null, true);

@@ -77,4 +77,12 @@ class EntityDamageByEntityEvent extends EntityDamageEvent{
 	public function setKnockBack($knockBack){
 		$this->knockBack = $knockBack;
 	}
+
+	/**
+	 * @return EventName|string
+     */
+	public function getName(){
+		return "EntityDamageByEntityEvent";
+	}
+
 }

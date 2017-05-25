@@ -63,6 +63,8 @@ abstract class Event{
 	/**
 	 * @param bool $value
 	 *
+	 * @return bool
+	 *
 	 * @throws \BadMethodCallException
 	 */
 	public function setCancelled($value = true){

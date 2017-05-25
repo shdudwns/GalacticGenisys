@@ -39,6 +39,7 @@ class BiomeSelector{
 
 	private $map = [];
 
+
 	public function __construct(Random $random, Biome $fallback){
 		$this->fallback = $fallback;
 		$this->temperature = new Simplex($random, 2, 1 / 16, 1 / 512);

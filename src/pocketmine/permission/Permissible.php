@@ -30,7 +30,7 @@ interface Permissible extends ServerOperator{
 	 *
 	 * @param string|Permission $name
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function isPermissionSet($name);
 

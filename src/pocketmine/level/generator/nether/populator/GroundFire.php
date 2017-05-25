@@ -29,7 +29,7 @@ use pocketmine\utils\Random;
 class GroundFire extends VariableAmountPopulator{
 	/** @var ChunkManager */
 	private $level;
-
+	
 	public function populate(ChunkManager $level, $chunkX, $chunkZ, Random $random){
 		$this->level = $level;
 		$amount = $this->getAmount($random);

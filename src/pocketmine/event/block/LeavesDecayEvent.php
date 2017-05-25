@@ -31,4 +31,11 @@ class LeavesDecayEvent extends BlockEvent implements Cancellable{
 		parent::__construct($block);
 	}
 
+	/**
+	 * @return EventName|string
+     */
+	public function getName(){
+		return "LeavesDecayEvent";
+	}
+
 }

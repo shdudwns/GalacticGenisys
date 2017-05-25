@@ -32,8 +32,8 @@ use pocketmine\block\RedstoneOre;
 use pocketmine\item\Item;
 use pocketmine\level\ChunkManager;
 use pocketmine\level\format\Chunk;
-use pocketmine\level\generator\populator\Ore;
-use pocketmine\level\generator\populator\Populator;
+use pocketmine\level\generator\normal\populator\Ore;
+use pocketmine\level\generator\normal\populator\Populator;
 use pocketmine\math\Vector3;
 use pocketmine\utils\Random;
 
@@ -78,21 +78,6 @@ class Flat extends Generator{
 
 	}
 
-	public static function parseLayers(string $layers) : array{
-		$result = [];
-		preg_match_all('#^(([0-9]*x|)([0-9]{1,3})(|:[0-9]{0,2}))$#m', str_replace(",", "\n", $layers), $matches);
-		$y = 0;
-		foreach($matches[3] as $i => $b){
-			$b = Item::fromString($b . $matches[4][$i]);
-			$cnt = $matches[2][$i] === "" ? 1 : intval($matches[2][$i]);
-			for($cY = $y, $y += $cnt; $cY < $y; ++$cY){
-				$result[$cY] = [$b->getId(), $b->getDamage()];
-			}
-		}
-
-		return $result;
-	}
-
 	protected function parsePreset($preset, $chunkX, $chunkZ){
 		$this->preset = $preset;
 		$preset = explode(";", $preset);
@@ -100,11 +85,19 @@ class Flat extends Generator{
 		$blocks = $preset[1] ?? "";
 		$biome = $preset[2] ?? 1;
 		$options = $preset[3] ?? "";
-		$this->structure = self::parseLayers($blocks);
-
+		preg_match_all('#^(([0-9]*x|)([0-9]{1,3})(|:[0-9]{0,2}))$#m', str_replace(",", "\n", $blocks), $matches);
+		$y = 0;
+		$this->structure = [];
 		$this->chunks = [];
+		foreach($matches[3] as $i => $b){
+			$b = Item::fromString($b . $matches[4][$i]);
+			$cnt = $matches[2][$i] === "" ? 1 : intval($matches[2][$i]);
+			for($cY = $y, $y += $cnt; $cY < $y; ++$cY){
+				$this->structure[$cY] = [$b->getId(), $b->getDamage()];
+			}
+		}
 
-		$this->floorLevel = $y = count($this->structure);
+		$this->floorLevel = $y;
 
 		for(; $y < 0xFF; ++$y){
 			$this->structure[$y] = [0, 0];

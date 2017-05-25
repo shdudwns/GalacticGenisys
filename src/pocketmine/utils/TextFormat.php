@@ -25,7 +25,7 @@ namespace pocketmine\utils;
  * Class used to handle Minecraft chat format, and convert it to other formats like ANSI or HTML
  */
 abstract class TextFormat{
-	const ESCAPE = "\xc2\xa7"; //ยง
+	const ESCAPE = "\xc2\xa7"; //§
 	
 	const BLACK = TextFormat::ESCAPE . "0";
 	const DARK_BLUE = TextFormat::ESCAPE . "1";

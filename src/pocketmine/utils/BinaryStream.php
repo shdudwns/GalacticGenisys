@@ -2,11 +2,11 @@
 
 /*
  *
- *  ____            _        _   __  __ _                  __  __ ____
- * |  _ \ ___   ___| | _____| |_|  \/  (_)_ __   ___      |  \/  |  _ \
+ *  ____            _        _   __  __ _                  __  __ ____  
+ * |  _ \ ___   ___| | _____| |_|  \/  (_)_ __   ___      |  \/  |  _ \ 
  * | |_) / _ \ / __| |/ / _ \ __| |\/| | | '_ \ / _ \_____| |\/| | |_) |
- * |  __/ (_) | (__|   <  __/ |_| |  | | | | | |  __/_____| |  | |  __/
- * |_|   \___/ \___|_|\_\___|\__|_|  |_|_|_| |_|\___|     |_|  |_|_|
+ * |  __/ (_) | (__|   <  __/ |_| |  | | | | | |  __/_____| |  | |  __/ 
+ * |_|   \___/ \___|_|\_\___|\__|_|  |_|_|_| |_|\___|     |_|  |_|_| 
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -15,13 +15,15 @@
  *
  * @author PocketMine Team
  * @link http://www.pocketmine.net/
- *
+ * 
  *
 */
 
 namespace pocketmine\utils;
 
 #include <rules/DataPacket.h>
+#ifndef COMPILE
+#endif
 
 use pocketmine\item\Item;
 
@@ -62,7 +64,6 @@ class BinaryStream extends \stdClass{
 			$this->offset = strlen($this->buffer);
 			return $str;
 		}
-
 		return $len === 1 ? $this->buffer{$this->offset++} : substr($this->buffer, ($this->offset += $len) - $len, $len);
 	}
 
@@ -150,7 +151,6 @@ class BinaryStream extends \stdClass{
 		$this->buffer .= Binary::writeLFloat($v);
 	}
 
-
 	public function getTriad(){
 		return Binary::readTriad($this->get(3));
 	}
@@ -158,7 +158,6 @@ class BinaryStream extends \stdClass{
 	public function putTriad($v){
 		$this->buffer .= Binary::writeTriad($v);
 	}
-
 
 	public function getLTriad(){
 		return Binary::readLTriad($this->get(3));
@@ -200,7 +199,6 @@ class BinaryStream extends \stdClass{
 		if($nbtLen > 0){
 			$nbt = $this->get($nbtLen);
 		}
-
 		return Item::get(
 			$id,
 			$data,
@@ -242,9 +240,10 @@ class BinaryStream extends \stdClass{
 		return Binary::readUnsignedVarInt($this);
 	}
 
-	/**
-	 * Writes an unsigned varint32 to the stream.
-	 */
+    /**
+     * Writes an unsigned varint32 to the stream.
+     * @param $v
+     */
 	public function putUnsignedVarInt($v){
 		$this->put(Binary::writeUnsignedVarInt($v));
 	}
@@ -256,9 +255,10 @@ class BinaryStream extends \stdClass{
 		return Binary::readVarInt($this);
 	}
 
-	/**
-	 * Writes a signed varint32 to the stream.
-	 */
+    /**
+     * Writes a signed varint32 to the stream.
+     * @param $v
+     */
 	public function putVarInt($v){
 		$this->put(Binary::writeVarInt($v));
 	}

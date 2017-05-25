@@ -23,11 +23,10 @@ namespace pocketmine\level\generator\normal\object;
 
 use pocketmine\block\Block;
 use pocketmine\level\ChunkManager;
-use pocketmine\level\generator\object\Object;
 use pocketmine\math\Vector3 as Vector3;
 use pocketmine\utils\Random;
 
-class Pond extends Object{
+class Pond{
 	private $random;
 	public $type;
 

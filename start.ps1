@@ -9,12 +9,12 @@ if(Test-Path "bin\php\php.exe"){
 	$binary = "php"
 }
 
-if(Test-Path "PocketMine-MP.phar"){
-	$file = "PocketMine-MP.phar"
+if(Test-Path "GalacticGenisys.phar"){
+	$file = "GalacticGenisys.phar"
 }elseif(Test-Path "src\pocketmine\PocketMine.php"){
 	$file = "src\pocketmine\PocketMine.php"
 }else{
-	echo "Couldn't find a valid PocketMine-MP installation"
+	echo "Couldn't find a valid GalacticGenisys installation"
 	pause
 	exit 1
 }

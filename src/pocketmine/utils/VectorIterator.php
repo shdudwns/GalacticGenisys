@@ -233,8 +233,8 @@ class VectorIterator implements \Iterator{
 	}
 
 	/**
-	 * @return Block
-	 *
+	 * @return Block|Vector3
+     *
 	 * @throws \OutOfBoundsException
 	 */
 	public function current(){

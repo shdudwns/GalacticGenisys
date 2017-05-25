@@ -78,13 +78,13 @@ class BaseLang{
 		}
 	}
 
-	/**
-	 * @param string      $str
-	 * @param string[]    $params
-	 * @param string|null $onlyPrefix
-	 *
-	 * @return string
-	 */
+    /**
+     * @param string $str
+     * @param string[] $params
+     *
+     * @param null $onlyPrefix
+     * @return string
+     */
 	public function translateString($str, array $params = [], $onlyPrefix = null){
 		$baseText = $this->get($str);
 		$baseText = $this->parseTranslation(($baseText !== null and ($onlyPrefix === null or strpos($str, $onlyPrefix) === 0)) ? $baseText : $str, $onlyPrefix);

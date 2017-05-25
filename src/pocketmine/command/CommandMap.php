@@ -41,7 +41,7 @@ interface CommandMap{
 	 * @param CommandSender $sender
 	 * @param string        $cmdLine
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	public function dispatch(CommandSender $sender, $cmdLine);
 

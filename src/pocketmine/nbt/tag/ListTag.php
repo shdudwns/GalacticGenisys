@@ -207,8 +207,6 @@ class ListTag extends NamedTag implements \ArrayAccess, \Countable{
 		foreach($tags as $tag){
 			$tag->write($nbt, $network);
 		}
-
-		return true;
 	}
 
 	public function __toString(){

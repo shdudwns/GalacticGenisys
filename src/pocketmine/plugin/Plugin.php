@@ -79,7 +79,7 @@ interface Plugin extends CommandExecutor{
 	public function saveResource($filename, $replace = false);
 
 	/**
-	 * Returns all the resources packaged with the plugin
+	 * Returns all the resources incrusted in the plugin
 	 */
 	public function getResources();
 
