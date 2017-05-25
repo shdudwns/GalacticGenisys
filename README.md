@@ -10,6 +10,10 @@ Get GalacticGenisys
 
 [![Travis](https://travis-ci.org/GalacticSoftware/GalacticGenisys.svg?branch=master)](https://travis-ci.org/GalacticSoftware/GalacticGenisys)
 
+if you need php binarys for windows [click here](https://ci.appveyor.com/project/caspervanneck/galacticsetup/build/artifacts)
+
+if you need php binarys for linux [click here](https://jenkins.pmmp.io/)
+
 NOTE: **The master branch is the only officially supported branch.**
 _All other branches are in testing and may be unstable. Do not use builds from other branches unless you are sure you understand the risks._
 
